@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Markdown Table — Free Visual Markdown Table Editor &amp; Generator | S3eidat Tools</title>
+<meta name="description" content="Edit Markdown tables like a spreadsheet. Paste from Excel, Google Sheets, CSV or an existing Markdown table, set column alignment, copy neatly aligned Markdown. Free and private.">
+<meta property="og:title" content="Markdown Table — free visual Markdown table editor">
+<meta property="og:description" content="Spreadsheet-style editing, paste from Excel/CSV, aligned Markdown output. Runs in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="markdown-table">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Markdown Table</h1>
+    <p>Edit a table like a spreadsheet and copy clean Markdown. Paste cells from Excel or Google Sheets straight into the grid, or import CSV and existing Markdown tables.</p>
+  </section>
+
+  <section class="card">
+    <div class="row between">
+      <div class="row">
+        <button class="btn small" id="add-row"><svg class="i"><use href="#i-plus"/></svg>Row</button>
+        <button class="btn small" id="add-col"><svg class="i"><use href="#i-plus"/></svg>Column</button>
+        <button class="btn small" id="toggle-import" aria-expanded="false"><svg class="i"><use href="#i-upload"/></svg>Import / paste</button>
+      </div>
+      <div class="row">
+        <button class="btn ghost small" id="sample">Sample</button>
+        <button class="btn ghost small" id="clear"><svg class="i"><use href="#i-trash"/></svg>Clear</button>
+      </div>
+    </div>
+
+    <div class="import mt" id="import" hidden>
+      <label class="field">Paste CSV, TSV (from Excel / Sheets) or a Markdown table
+        <textarea class="textarea" id="import-text" spellcheck="false" dir="auto" placeholder="Name,Role,Since&#10;Omar,Owner,2026"></textarea>
+      </label>
+      <div class="row mt">
+        <button class="btn primary small" id="do-import">Import</button>
+        <label class="check"><input type="checkbox" id="first-header" checked> First row is the header</label>
+        <span class="faint" id="import-hint">Format is detected automatically.</span>
+      </div>
+    </div>
+
+    <div class="tbl-wrap mt grid-wrap">
+      <table class="mdgrid" id="grid"></table>
+    </div>
+    <p class="faint mt">Tip: paste a block of cells into any cell to fill the grid from there. <kbd>Enter</kbd> moves down, <kbd>Tab</kbd> moves right. Click the alignment chip above a column to cycle it.</p>
+  </section>
+
+  <section class="card mt">
+    <div class="row between">
+      <h2>Markdown</h2>
+      <div class="row">
+        <label class="check"><input type="checkbox" id="pretty" checked> Align columns</label>
+        <button class="btn small" id="copy"><svg class="i"><use href="#i-copy"/></svg>Copy</button>
+        <button class="btn small" id="save"><svg class="i"><use href="#i-download"/></svg>.md</button>
+      </div>
+    </div>
+    <pre class="out mt" id="out" tabindex="0"></pre>
+    <div class="row mt"><span class="chip" id="dims"></span></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
